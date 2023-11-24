@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="LTareasApp.MainPage">
+
+    <StackLayout Spacing="10" Padding="15">
+        <Label Text="Tareas" FontSize="Large" HorizontalOptions="Start" />
+        <Entry x:Name="tareaEntry" Placeholder="Nueva tarea"/>
+        <Button Text="Agregar tarea" Clicked="OnAgregarTareaClicked"/>
+        <ListView x:Name="tareasListView" ItemsSource="{Binding Tareas}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout Orientation="Horizontal">
+                            <Label Text="{Binding Nombre}" VerticalOptions="CenterAndExpand"  />
+                            <StackLayout Orientation="Horizontal" HorizontalOptions="EndAndExpand">
+                                <CheckBox IsChecked="{Binding Completada}" CheckedChanged="OnTareaCheckedChanged"/>
+                                <Button Text="Eliminar" FontSize="13" Clicked="OnEliminarTareaClicked" Margin="0,0,0,6"/>
+                            </StackLayout>
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <Label x:Name="noTareasLabel" Text="No hay deberes pendientes." IsVisible="False" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
+    </StackLayout>
+</ContentPage>
